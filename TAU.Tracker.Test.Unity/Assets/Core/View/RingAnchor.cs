@@ -17,4 +17,13 @@ public class RingAnchor : MonoBehaviour
             ring.Initialize(1, Index);
         });
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out Ring ring))
+        {
+            ring.SetAtAnchor(Index);
+            Debug.Log($"Ring {ring.Size} set at anchor {Index}");   
+        }
+    }
 }

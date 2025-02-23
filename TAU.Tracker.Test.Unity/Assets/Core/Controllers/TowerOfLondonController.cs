@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 
+[System.Serializable]
 public class TowerOfLondonController
 {
-    public TowerOfLondonDomainLogic Domain { get; private set; }
+    public TowerOfLondonDomainLogic Domain;
     public Action OnStateChanged; // Уведомление об изменении состояния
     public Action OnMovesChanged; // Уведомление об изменении количества ходов
 

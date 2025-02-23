@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4687316951263867012}
   - component: {fileID: 4458170769728276727}
+  - component: {fileID: 1010268806489982120}
   m_Layer: 0
   m_Name: RIngAnchor
   m_TagString: Untagged
@@ -78,6 +79,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d203251c1ca26a45af83f776d80fb94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Index: 0
+  Rings: []
+--- !u!65 &1010268806489982120
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687316951263867067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4027066, z: 1}
+  m_Center: {x: 0, y: 0.70135343, z: 0}
 --- !u!1 &8833620034811767060
 GameObject:
   m_ObjectHideFlags: 0

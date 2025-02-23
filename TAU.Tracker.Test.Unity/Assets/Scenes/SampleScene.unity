@@ -269,7 +269,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -423,14 +423,6 @@ PrefabInstance:
     - target: {fileID: 3211508772202291563, guid: 7cb588f6e4a1d7f4db29ead7f2a4845d, type: 3}
       propertyPath: m_Name
       value: GameScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211508772753258879, guid: 7cb588f6e4a1d7f4db29ead7f2a4845d, type: 3}
-      propertyPath: m_Name
-      value: Playable
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211508773795536929, guid: 7cb588f6e4a1d7f4db29ead7f2a4845d, type: 3}
-      propertyPath: m_Name
-      value: RingAnchor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb588f6e4a1d7f4db29ead7f2a4845d, type: 3}

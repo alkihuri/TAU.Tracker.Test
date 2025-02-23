@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 public class Ring : MonoBehaviour
 {
     public int Size;  // Размер кольца (1 - маленькое, 2 - среднее, 3 - большое)
     public int CurrentPegIndex; // Индекс основы, на которой находится кольцо
     public Transform visual; // Визуальное представление кольца 
+    private Vector3 _lastFixedPosition;
 
     public void Initialize(int size, int pegIndex)
     {
-        if(visual==null)
+        if (visual == null)
             visual = transform.GetChild(0); // Получаем визуальное представление кольца (первый дочерний объект)
         if (visual == null)
         {
@@ -20,14 +24,50 @@ public class Ring : MonoBehaviour
         UpdateVisual();
     }
 
+    public void Highlite()
+    {
+        // Логика подсветки кольца
+        Renderer renderer = visual.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = Color.yellow; // Пример: подсветка кольца
+        }
+        _lastFixedPosition = transform.position;
+    }
+
     private void UpdateVisual()
     {
         // Логика обновления визуального представления кольца
-        visual.localScale = new Vector3(Size, 1, Size); // Пример: размер кольца зависит от его "размера"
-        Renderer renderer = visual.GetComponent<Renderer>();
+        if (Size != 0)
+            visual.localScale = new Vector3(Size, 1, Size); // Пример: размер кольца зависит от его "размера"
+        Renderer renderer = visual.GetComponentInChildren<Renderer>();
         if (renderer != null)
         {
             renderer.material.color = Color.Lerp(Color.red, Color.green, Size / 3f); // Пример: цвет кольца зависит от его "размера"
         }
+
+        transform.position = new Vector3(CurrentPegIndex - 2, 0, 0); // Пример: позиция кольца зависит от индекса основы    
+    }
+
+    public void ResetHighlight()
+    {
+        // Логика снятия подсветки с кольца
+        Renderer renderer = visual.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = Color.white; // Пример: снятие подсветки с кольца
+        }
+
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = _lastFixedPosition;
+    }
+
+    public void SetAtAnchor(int index)
+    {
+        CurrentPegIndex = index;
+        UpdateVisual();
     }
 }
