@@ -13,14 +13,12 @@ public class TowerOfLondonView : MonoBehaviour
 
     private void UpdateView()
     {
-        // Обновление визуального состояния игры
-        Debug.Log("Game State: " + Controller.Domain.CurrentState);
+        // Обновление визуального состояния игры 
     }
 
     private void UpdateMoves()
     {
-        // Обновление отображения количества ходов
-        Debug.Log("Moves: " + Controller.Domain.CurrentMoves);
+        // Обновление отображения количества ходов 
     }
 
     private void Update()

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 
-public class TowerOfLondonDomainLogic
+public class TowerOfLondonDomainLogic : IGameLogic  
 {
-    public enum GameState { Playing, Win, Lose }
-    public GameState CurrentState { get; private set; }
-
     public int MaxMoves { get; private set; }
     public int CurrentMoves { get; private set; }
 
@@ -15,15 +13,12 @@ public class TowerOfLondonDomainLogic
     {
         MaxMoves = maxMoves;
         CurrentMoves = 0;
-        CurrentState = GameState.Playing;
         TargetConfiguration = targetConfiguration;
         CurrentConfiguration = new List<List<int>> { new List<int>(), new List<int>(), new List<int>() };
     }
 
     public bool TryMoveRing(int fromPeg, int toPeg)
     {
-        if (CurrentState != GameState.Playing) return false;
-
         var fromPegRings = CurrentConfiguration[fromPeg];
         var toPegRings = CurrentConfiguration[toPeg];
 
@@ -35,19 +30,16 @@ public class TowerOfLondonDomainLogic
         toPegRings.Insert(0, ring);
 
         CurrentMoves++;
-        CheckWinCondition();
         return true;
     }
 
-    private void CheckWinCondition()
+    public bool IsWin()
     {
-        if (CurrentConfiguration.Equals(TargetConfiguration))
-        {
-            CurrentState = GameState.Win;
-        }
-        else if (CurrentMoves >= MaxMoves)
-        {
-            CurrentState = GameState.Lose;
-        }
+        return CurrentConfiguration.Equals(TargetConfiguration);
+    }
+
+    public bool IsLose()
+    {
+        return CurrentMoves >= MaxMoves;
     }
 }
