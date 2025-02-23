@@ -4,7 +4,7 @@ public class Ring : MonoBehaviour
 {
     public int Size;  // Размер кольца (1 - маленькое, 2 - среднее, 3 - большое)
     public int CurrentPegIndex; // Индекс основы, на которой находится кольцо
-    public Transform visual; // Визуальное представление кольца
+    public Transform visual; // Визуальное представление кольца 
 
     public void Initialize(int size, int pegIndex)
     {

@@ -1,9 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
-public class TowerOfLondonView : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public TowerOfLondonController Controller;
+    List<RingAnchor> ringAnchors = new List<RingAnchor>();
+    private void Awake()
+    {
+        ringAnchors = GetComponentsInChildren<RingAnchor>().ToList();
 
+        for (int i = 0; i < ringAnchors.Count; i++)
+        {
+            ringAnchors[i].Initialize(i + 1);
+        }
+    }
     private void Start()
     {
         // Подписка на изменения

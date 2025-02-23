@@ -12,16 +12,17 @@ public class StateMachine : MonoBehaviour
     private LoseState _loseState;
     private PlayingState _playingState;
 
-    public StateMachine(DIContainer diContainer)
+    public void Init(DIContainer diContainer)
     {
         DIContainer = diContainer;
         _winState = new WinState();
         _loseState = new LoseState();
         _playingState = new PlayingState(DIContainer.GameLogic);
+        SetPlayingState();  
     }
 
     private void ChangeState(State newState)
-    { 
+    {
         if (CurrentState != null)
         {
             CurrentState.Exit(this);
@@ -33,9 +34,22 @@ public class StateMachine : MonoBehaviour
         UnityEngine.Debug.Log($"Состояние изменилось на {CurrentState}");
     }
 
-    public void SetWinState() => ChangeState(_winState);
-    public void SetLoseState() => ChangeState(_loseState);
-    public void SetPlayingState() => ChangeState(_playingState);
+    public void SetWinState()
+    {
+        ChangeState(_winState);
+        CurrentStateType = StateType.Win;
+    }
+    public void SetLoseState()
+    {
+        ChangeState(_loseState);
+        CurrentStateType = StateType.Lose;
+
+    }
+    public void SetPlayingState()
+    {
+        ChangeState(_playingState);
+        CurrentStateType = StateType.Playing;
+    }
 
 }
 
@@ -44,4 +58,4 @@ public enum StateType
     Win,
     Lose,
     Playing
-}   
+}

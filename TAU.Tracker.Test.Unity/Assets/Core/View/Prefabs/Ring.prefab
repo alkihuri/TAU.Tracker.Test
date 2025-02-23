@@ -93,6 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6445474719485628070}
   - component: {fileID: 6445474719485628071}
+  - component: {fileID: 3775688176935924443}
+  - component: {fileID: 7244003133438408357}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -131,3 +133,32 @@ MonoBehaviour:
   Size: 0
   CurrentPegIndex: 0
   visual: {fileID: 6445474719485628070}
+--- !u!135 &3775688176935924443
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445474719485628065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7244003133438408357
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445474719485628065}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
