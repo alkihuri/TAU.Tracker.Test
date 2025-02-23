@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
 
     private void InitializeRings(RingsConfiguration currentCongifuration)
     {
-        for(int i=0;i< _ringAnchors.Count;i++)
+        for (int i = 0; i < _ringAnchors.Count; i++)
         {
-            for(int j = 0; j < _ringAnchors[i].Rings.Count; j++) 
+            for (int j = 0; j < _ringAnchors[i].Rings.Count; j++)
             {
                 Ring ring = _ringAnchors[i].Rings[j];
                 if (ring == null)
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
                 }
                 if (currentCongifuration.Configuration[i].Count <= j)
                 {
-                    ring.gameObject.SetActive(false);
+                    // ring.gameObject.SetActive(false);
                     continue;
                 }
                 ring.Initialize(currentCongifuration.Configuration[i][j], i + 1);
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
 
         // Перемещаем кольцо вместе с курсором мыши
         Vector3 newPosition = GetMouseWorldPosition() + _offset;
-        _selectedRing.transform.position = new Vector3(newPosition.x, _selectedRing.transform.position.y, newPosition.z);
+        _selectedRing.transform.position = new Vector3(newPosition.x, _selectedRing.transform.position.y, 0);
     }
 
     private void DropRing()
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
         if (_selectedRing == null) return;
 
         // Сбрасываем выбранное кольцо
-        _selectedRing.ResetHighlight(); // Убираем подсветку
+        _selectedRing.ResetHighlight(); // Убираем подсветку 
         _selectedRing.ResetPosition(); // Возвращаем кольцо на исходную позицию
         _selectedRing = null;
     }

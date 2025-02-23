@@ -7,6 +7,9 @@ public class Ring : MonoBehaviour
 {
     public int Size;  // Размер кольца (1 - маленькое, 2 - среднее, 3 - большое)
     public int CurrentPegIndex; // Индекс основы, на которой находится кольцо
+
+    public RingAnchor CurrentAnchor { get; private set; }
+
     public Transform visual; // Визуальное представление кольца 
     private Vector3 _lastFixedPosition;
 
@@ -46,7 +49,7 @@ public class Ring : MonoBehaviour
             renderer.material.color = Color.Lerp(Color.red, Color.green, Size / 3f); // Пример: цвет кольца зависит от его "размера"
         }
 
-        transform.position = new Vector3(CurrentPegIndex - 2, 0, 0); // Пример: позиция кольца зависит от индекса основы    
+        transform.position = CurrentAnchor.Position; // Пример: позиция кольца зависит от индекса основы    
     }
 
     public void ResetHighlight()
@@ -62,12 +65,14 @@ public class Ring : MonoBehaviour
 
     public void ResetPosition()
     {
-        transform.position = _lastFixedPosition;
+        UpdateVisual();
     }
 
-    public void SetAtAnchor(int index)
+    public void SetAtAnchor(RingAnchor anchor)
     {
-        CurrentPegIndex = index;
+        transform.SetParent(anchor.transform);
+        CurrentPegIndex = anchor.Index;
+        CurrentAnchor = anchor;
         UpdateVisual();
     }
 }

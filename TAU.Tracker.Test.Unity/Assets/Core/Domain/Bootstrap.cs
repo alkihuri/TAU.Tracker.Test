@@ -33,8 +33,8 @@ public class Bootstrap : MonoBehaviour
         stateMachine.Init(diContainer);
 
         // Инициализация View
-        GameObject gameManagerObject = new GameObject("GameManager");
-        _view = gameManagerObject.AddComponent<GameManager>();
+        GameObject gameManagerObject = Instantiate(Resources.Load<GameObject>("GameManager"));
+        _view = gameManagerObject.GetComponent<GameManager>();
         _view.Init(_controller);
     }
 }
