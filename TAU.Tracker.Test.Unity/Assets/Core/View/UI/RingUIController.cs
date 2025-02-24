@@ -16,7 +16,7 @@ public class RingUIController : MonoBehaviour
     }
     public void UpdateUI(int position)
     {
-        textMeshProUGUI.text = position.ToString(); 
+        textMeshProUGUI.text = position == 0 ? "_" : position.ToString();
     }
 
 
