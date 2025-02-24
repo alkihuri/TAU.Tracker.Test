@@ -13,16 +13,18 @@ public class TowerOfLondonController
         Domain = model;
     }
 
-    public void MoveRing(int fromPeg, int toPeg)
+    public void MoveRing(int fromPeg, int toPeg, int size)
     {
-        if (Domain.TryMoveRing(fromPeg, toPeg))
+        if (Domain.TryMoveRing(fromPeg , toPeg, size))
         {
             OnMovesChanged?.Invoke();
             OnStateChanged?.Invoke();
+            //return true;
         }
         else
         {
             UnityEngine.Debug.Log("Ошибка при перемещении.");
+           // return false;
         }
     }
 }

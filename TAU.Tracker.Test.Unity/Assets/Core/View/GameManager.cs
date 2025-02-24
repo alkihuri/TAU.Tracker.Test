@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         _ringAnchors = GetComponentsInChildren<RingAnchor>().ToList();
         for (int i = 0; i < _ringAnchors.Count; i++)
         {
-            _ringAnchors[i].Initialize(i + 1);
+            _ringAnchors[i].Initialize(currentCongifuration.Configuration[i][0], i + 1);
         }
     }
 
@@ -65,18 +65,18 @@ public class GameManager : MonoBehaviour
         _ringAnchors = GetComponentsInChildren<RingAnchor>().ToList();
         for (int i = 0; i < _ringAnchors.Count; i++)
         {
-            _ringAnchors[i].Initialize(i + 1);
+            _ringAnchors[i].Initialize(i + 1, i + 1);
         }
     }
 
     private void UpdateView()
     {
-        // Обновление визуального состояния игры 
+         
     }
 
     private void UpdateMoves()
     {
-        // Обновление отображения количества ходов
+        
 
     }
 
@@ -145,4 +145,5 @@ public class GameManager : MonoBehaviour
         mousePosition.z = Camera.main.WorldToScreenPoint(_selectedRing.transform.position).z;
         return Camera.main.ScreenToWorldPoint(mousePosition);
     }
+ 
 }

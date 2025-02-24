@@ -14,4 +14,13 @@ public class DIContainer
             UnityEngine.Debug.Log("Зарегистрирован GameLogic для стандартной игры");
         }
     }
+
+    public T Get<T>()
+    {
+        if (typeof(T) == typeof(IGameLogic))
+        {
+            return (T)GameLogic;
+        }
+        return default;
+    }
 }

@@ -30,13 +30,14 @@ public class Ring : MonoBehaviour
     public void Highlite()
     {
         // Логика подсветки кольца
-        Renderer renderer = visual.GetComponent<Renderer>();
+        Renderer renderer = visual.GetComponentInChildren<Renderer>();
         if (renderer != null)
         {
             renderer.material.color = Color.yellow; // Пример: подсветка кольца
         }
         _lastFixedPosition = transform.position;
     }
+
 
     private void UpdateVisual()
     {
@@ -48,14 +49,16 @@ public class Ring : MonoBehaviour
         {
             renderer.material.color = Color.Lerp(Color.red, Color.green, Size / 3f); // Пример: цвет кольца зависит от его "размера"
         }
-
-        transform.position = CurrentAnchor.Position; // Пример: позиция кольца зависит от индекса основы    
+        if (CurrentAnchor != null)
+            transform.position = CurrentAnchor.Position;
+        else
+            Debug.LogError("CurrentAnchor is null");
     }
 
     public void ResetHighlight()
     {
         // Логика снятия подсветки с кольца
-        Renderer renderer = visual.GetComponent<Renderer>();
+        Renderer renderer = visual.GetComponentInChildren<Renderer>();
         if (renderer != null)
         {
             renderer.material.color = Color.white; // Пример: снятие подсветки с кольца

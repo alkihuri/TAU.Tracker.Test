@@ -12,9 +12,9 @@ public class Bootstrap : MonoBehaviour
         // Инициализация Model
         List<List<int>> targetConfigurationData = new List<List<int>>
         {
-            new List<int> { 3, 2, 1 }, // Целевая конфигурация для первой основы
-            new List<int> { 1, 2, 3 }, // Целевая конфигурация для второй основы
-            new List<int> { 1, 3, 2 }  // Целевая конфигурация для третьей основы
+            new List<int> { 2, 3, 1 }, // Целевая конфигурация для первой основы
+            new List<int> { }, // Целевая конфигурация для второй основы
+            new List<int> { }  // Целевая конфигурация для третьей основы
         };
 
         RingsConfiguration ringsConfiguration = new RingsConfiguration(targetConfigurationData);
